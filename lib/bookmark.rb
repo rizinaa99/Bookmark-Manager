@@ -1,3 +1,4 @@
+require 'pg'
 class Bookmark
   attr_reader :title, :url
   def initialize(title, url)
@@ -6,10 +7,13 @@ class Bookmark
   end
 
   def self.all
-    [
-      Bookmark.new('Google', 'https://www.google.com/'),
-      Bookmark.new('Instagram', 'https://www.instagram.com/'),
-      Bookmark.new('Snapchat', 'https://www.snapchat.com/')
-    ]
+    # [
+    #   Bookmark.new('Google', 'https://www.google.com/'),
+    #   Bookmark.new('Instagram', ''),
+    #   Bookmark.new('Makers', "http://makers.tech")
+    # ]
+    connection = PG.connect(dbname: 'bookmark_manager')
+    result = connection.exec('SELECT * FROM bookmarks')
+    result.map { |bookmark| bookmark['url'] }
   end
 end

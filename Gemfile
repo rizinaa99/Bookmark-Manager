@@ -15,4 +15,5 @@ group :test, :development do
   gem "rspec"
   gem "launchy"
   gem "rubocop"
+  gem "pg"
 end
