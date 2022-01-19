@@ -3,18 +3,20 @@ require 'bookmark'
 describe Bookmark do
   subject { described_class.new('Google', 'https://www.google.com/') }
 
-  it 'knows its title' do
-    expect(subject.title).to eq('Google')
-  end
-
-  it 'knows its URL' do
-    expect(subject.url).to eq('https://www.google.com/')
-  end
-
   describe '.all' do
     it 'returns a list of bookmarks' do
+      Bookmark.new_bookmark(url: "https://www.makersacademy.com")
+      Bookmark.new_bookmark(url: "https://www.destroyallsoftware.com")
+      Bookmark.new_bookmark(url: "https://www.google.com/")
       bookmarks = Bookmark.all
       expect(bookmarks).to include('https://www.google.com/')
     end
   end
+  describe "new_bookmark" do
+    it "creates new bookmarks" do
+    Bookmark.new_bookmark(url: "www.you.com")
+    expect(Bookmark.all).to include "www.you.com"
+    end
+  end 
+
 end

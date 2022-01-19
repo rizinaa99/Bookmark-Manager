@@ -4,6 +4,9 @@
     so that I can revisit pages I like
     I can see a list of bookmarks
 
+    as a user 
+    I want to add a new bookmark
+
 ![Sequence diagram](diagram.png "Domain model diagram")
 
     alias client="Client"
@@ -21,7 +24,7 @@
     view->controller: "bookmarks page (HTML)"
     controller->client: "bookmarks page (HTML)"
 
-Connecting to PostgresSQL:
+Connecting to PosgresSQL:
 1) Connect to psql
 2) Create the database using the psql command CREATE DATABASE bookmark_manager;
 3) Connect to the database using the pqsl command \c bookmark_manager;
